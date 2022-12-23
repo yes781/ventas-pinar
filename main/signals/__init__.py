@@ -1,0 +1,1 @@
+from .imagen import delete_imagen_posdelete

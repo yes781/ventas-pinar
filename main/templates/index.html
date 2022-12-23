@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for i in producto %}
+            <div class="container">
+                <div class="col">
+                    <div class="card-group">
+                        <div class="card" style="width: 24rem;">
+                            {% for j in imagen %}
+                                {% if j.producto == i %}
+                                    <img src="{{ j.iamgen.url }}" class="card-img-top" alt="...">
+                                {% endif %}
+                            {% endfor %}
+                            <div class="card-body">
+                                <h5 class="card-title">{{ i.nombre|upper }}</h5>
+                                <p class="card-text">Presio: {{ i.precio }}</p>
+                                {% for k in contacto %}
+                                    {% if k.user == i.usuario %}
+                                        <p class="card-text">Nombre: {{ k.name | upper }}</p>
+                                        <p class="card-text">Email: {{ k.email }}</p>
+                                        <p class="card-text">Telefono: {{ k.phone }}</p>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

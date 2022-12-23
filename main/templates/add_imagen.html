@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <h3 class="container, text-center">Adicionar Imagen</h3>
+    <div class="container">
+        {#        {% for a in array %}#}
+        {#            <img style="height: 100px;width: 200px" src="{{ a.iamgen.url }}"/>#}
+        {#            {% if forloop.counter|divisibleby:3 %}#}
+        {#                <br>#}
+        {#            {% endif %}#}
+        {#        {% endfor %}#}
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+                <label class="form-label">Producto</label>
+                {{ form.producto }}
+            </div>
+            <div>
+                <label class="form-label">Imagen</label>
+                {{ form.iamgen }}
+            </div>
+            <input value="Upload" class="btn btn-primary" type="submit"/>
+        </form>
+
+    </div>
+{% endblock %}
